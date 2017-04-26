@@ -1,23 +1,24 @@
+
 <!DOCTYPE html>
 <html>
 <head>
+    <base href="<%=basePath%>" />
+    <title>水下传感网立体部署系统</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>水下传感网立体部署系统</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
-<div class="menu" id="box">
+<div class="box" id="box">
     <label for="nodeNum">请输入节点个数: </label><input type="text" name="nodeNum" id="nodeNum">
     <select name="selectModel" id="selectModel" class="selectModel">
         <option value="sphere">球形</option>
         <!--<option value="cube">立方体</option>-->
         <option value="random">随机</option>
     </select>
-    <input type="button" name="submit" value="确定" id="submit">
+    <input type="button" name="btn" value="确定" id="btn">
     <input type="button" name="clearBtn" value="重置" id="clearBtn">
     <input type="button" name="pauseBtn" value="暂停" id="pauseBtn">
     <input type="button" name="hideLine" value="隐藏连线" id="hideLine">

@@ -1,6 +1,5 @@
 
-(function () {
-    var submit = $("#submit"),        // 生成节点
+var btn = $("#btn"),                 // 生成节点
     clearBtn = $("#clearBtn"),      // 重置
     hideLine = $("#hideLine"),      // 隐藏连线
     hideNode = $("#hideNode"),      // 隐藏节点
@@ -47,57 +46,57 @@
     scene,    // 场景
     renderer;  // 渲染器
 
+// 导航栏可拖动
+// $( "#box" ).draggable();
 
-submit.click(function () {
+
+// 确定按钮点击
+btn.click(function () {
     var nodeNum = $("#nodeNum").val();
+
     // 判断输入的是否为数字
     if (isValidNum(nodeNum)) {
+
         // 球形 随机
         model = selectModel.val();
+
         init(nodeNum);
         leftAreaBox.show();
         nodeStatusColor.show();
         animate();
+
         // 点击确定之后禁用确定按钮
         this.disabled = "true";
     }
     else {
-        return 0;
+        // 如果输入不是有效数字返回
+        // alert("请输入有效数字！");
+        return;
     }
 });
+
 
 // 当点重置按钮时，刷新网页
 clearBtn.click(function () {
     window.location.reload(true);
 });
 
-var toggle = (function () {
-    var a = true;
-    return function (fn1, fn2) {
-        a = !a;
-        var toggler = function () {
-            if (a) {
-                return fn1;
-            } else {
-                return fn2;
-            }
-        };
-        return this.onclick = toggler();
-    }
-})();
-
 // 初始化函数
 function init(nodeNum) {
 
     // 节点初始能量值
     var nodeInitEnergy = 100,
+
         // 节点坐标数组
         xArr = [],
         yArr = [],
         zArr = [],
+
         container,
+
         cameraZ = 800;  // 相机z轴默认距离
 
+    // ***********************************************
     // 右上角小功能模块，使用 dat.gui.js
     var controls = new function() {
         this.x = 100;
@@ -118,6 +117,8 @@ function init(nodeNum) {
     gui.add(controls, 'z', 100, 3000).onChange(controls.redraw);
     gui.add(controls, 'nodeSize', 10,200).onChange(controls.redraw);
     // gui.add(controls, 'nodeSize', 10,200).onChange(controls.redraw);
+
+    // ***************************************************
 
     container = document.createElement('div');
     document.body.appendChild(container);
@@ -230,6 +231,8 @@ function init(nodeNum) {
     // 第一个点与最后一个点之间是一条线，其余点之间是两条线
     // a 个节点产生数组长度为 坐标位置的个数为 a(a - 1) , 产生的线条数为 a(a - 1) - 1
 
+
+    //**********************************************************************
     // 控制器节点
     var controlGeometry = new THREE.Geometry();
     var controlNode = new THREE.Sprite(controlMaterial);
@@ -248,39 +251,44 @@ function init(nodeNum) {
 
     scene.add(controlLine);
 
+
     //*************************************************************************
+
+
 
     var nodePositionArr = [];  // 节点位置标志数组
 
-
-    (function () {
-        for (var i = 0; i < nodeNum;i++) {
-            for (var j = i+1; j < nodeNum;j++) {
-                geometry.vertices.push(particles[i].position);
-                geometry.vertices.push(particles[j].position);
-                nodePositionArr.push(i);
-                nodePositionArr.push(j);
-            }
+    for (var i = 0; i < nodeNum;i++) {
+        for (var j = i+1; j < nodeNum;j++) {
+            geometry.vertices.push(particles[i].position);
+            geometry.vertices.push(particles[j].position);
+            nodePositionArr.push(i);
+            nodePositionArr.push(j);
         }
-    })();
+    }
 
     nodeSite.children("p").html(nodePositionArr);
 
 
+
     // 显示、隐藏节点
-    hideNode.get(0).onclick = function () {
-        toggle(function () {
-            for (var i = 0; i < nodeNum; i++) {
+    var toggleNodeFlag = 1;
+    hideNode.click(function () {
+        if (toggleNodeFlag == 1) {
+            for (var i = 0; i < nodeNum;i++) {
                 scene.remove(particles[i]);
             }
             $(this).attr("value","显示节点");
-        }, function () {
-            for (var i = 0; i < nodeNum; i++) {
+            toggleNodeFlag = 2;
+        }
+        else {
+            for (var i = 0; i < nodeNum;i++) {
                 scene.add(particles[i]);
-                $(this).attr("value","隐藏节点");
             }
-        });
-    };
+            $(this).attr("value","隐藏节点");
+            toggleNodeFlag = 1;
+        }
+    });
 
     // 显示节点信息
     nodeInfoBox.show();
@@ -831,11 +839,11 @@ function init(nodeNum) {
     // 节点信息区域可拖动
     nodeInfoBox.draggable();
     // 相机位置区域可拖动
-    nodeInfo.draggable();
+    // nodeInfo.draggable();
     // 节点状态区域可拖动
-    nodeStatus.draggable();
+    // nodeStatus.draggable();
     // 控制器可以拖动
-    nodeControl.draggable();
+    // nodeControl.draggable();
     // 节点状态颜色标志可拖动
     nodeStatusColor.draggable();
 }
@@ -907,5 +915,4 @@ function render() {
 
     renderer.render( scene, camera );
 }
-})();
 

@@ -1112,7 +1112,7 @@ var safeBlur = $.ui.safeBlur = function( element ) {
 //>>description: Enables dragging functionality for any element.
 //>>docs: http://api.jqueryui.com/draggable/
 //>>demos: http://jqueryui.com/draggable/
-//>>style.structure: ../../themes/base/draggable.style
+//>>css.structure: ../../themes/base/draggable.css
 
 
 
@@ -1263,7 +1263,7 @@ $.widget( "ui.draggable", $.ui.mouse, {
 		//Cache the margins of the original element
 		this._cacheMargins();
 
-		//Store the helper's style position
+		//Store the helper's css position
 		this.cssPosition = this.helper.css( "position" );
 		this.scrollParent = this.helper.scrollParent( true );
 		this.offsetParent = this.helper.offsetParent();

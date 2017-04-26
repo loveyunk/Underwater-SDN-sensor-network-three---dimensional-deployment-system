@@ -1,31 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+}
 body {
-    background: #000;
+    background-color: #000000;
     overflow: hidden;
     font-size: 14px;
-    font-family: SimSun , sans-serif;
+    font-family: '宋体' , sans-serif;
 }
 a {
     color:#0078ff;
+    text-decoration: none;
 }
-.menu {
+ul,li {
+    list-style: none;
+}
+.box {
     height: 42px;
     background: rgba(50,50,50,.8);
     border-radius: 5px;
-    font-weight: bold;
     position: absolute;
+    font-weight: bold;
     top: 10px;
-    left: 10px;
-    z-index: 100;
     padding: 8px 10px;
+    left: 10px;
     color: #888;
 }
 input[type=text] {
-    border: none;
-    outline: none;
+    border: 0;
+    outline: 0;
     padding: 3px 5px;
     margin-top: 10px;
-    /*margin-bottom: 20px;*/
+    margin-bottom: 20px;
     width: 30px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
     background: rgba(123,123,123,.6);
     color: #bbb;
@@ -34,7 +43,7 @@ input[type=text] {
     background: rgba(88,88,88,.8);
     outline: none;
     outline-offset: 0;
-    border: none;
+    border: 0;
     padding: 2px;
     font-weight: bold;
     color: #888;
@@ -47,14 +56,18 @@ select option {
 input[type=button] {
     padding: 4px 16px;
     margin: 0 2px;
-    outline: none;
+    outline: 0;
     font-size: 12px;
     font-weight: bold;
+    /*background-color: #444;*/
     background-color: rgba(88,88,88,.8);
     cursor: pointer;
     color: #888;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
     border-radius: 5px;
     border: 1px solid rgba(88,88,88,.8);
+    /*box-shadow: inset -1px -1px 2px #555;*/
 }
 input[type=button]:hover {
     border: 1px solid #0A84C0;
