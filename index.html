@@ -1,118 +1,113 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="<%=basePath%>" />
-    <title>水下传感网立体部署系统</title>
     <meta charset="utf-8">
+    <title>水下传感网立体部署系统</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
-<div class="box" id="box">
-    <label for="nodeNum">请输入节点个数: </label><input type="text" name="nodeNum" id="nodeNum">
-    <select name="selectModel" id="selectModel" class="selectModel">
-        <option value="sphere">球形</option>
-        <!--<option value="cube">立方体</option>-->
-        <option value="random">随机</option>
-    </select>
-    <input type="button" name="btn" value="确定" id="btn">
-    <input type="button" name="clearBtn" value="重置" id="clearBtn">
-    <input type="button" name="pauseBtn" value="暂停" id="pauseBtn">
-    <input type="button" name="hideLine" value="隐藏连线" id="hideLine">
-    <input type="button" name="hideNode" value="隐藏节点" id="hideNode">
-    <input type="button" name="showGird" value="显示网格" id="showGird">
-    <input type="button" name="nodeInfoBtn" value="节点信息" id="nodeInfoBtn">
-    <input type="button" name="dataBtn" value="显示数据" id="dataBtn">
-    <input type="button" name="hideAll" value="隐藏" id="hideAll">
-    <!--<a href="history.jsp" target="_blank"><input type="button" value="历史记录" class="historyBtn" id="historyBtn"></a>-->
-    <!--<input type="button" name="" value="保存数据">-->
-    <!--<a href="Exit"><input type="button" name="exitBtn" value="退出" id="exitBtn"></a>-->
-</div>
-
-<div class="showAllBox" id="showAllBox">
-    <span>显示</span>
-</div>
-
-<div class="dataBox" id="dataBox">
-    <table id="dataBoxTable">
-    </table>
-</div>
-
-<ul class="nodeStatusColor" id="nodeStatusColor">
-    <li class="list1"></li>
-    <li class="list2"></li>
-    <li class="list3"></li>
-</ul>
-
-
-<div class="nodeInfoBox" id="nodeInfoBox">
-    <table id="nodeInfoBoxTable">
-    </table>
-</div>
-
-
-<div class="leftAreaBox" id="leftAreaBox">
-
-    <!--<div class="user node">-->
-        <!--<h2>用户中心</h2>-->
-        <!--&lt;!&ndash;<p>${sessionScope.user.username} 欢迎您</p>&ndash;&gt;-->
-        <!--<p>admin 欢迎您</p>-->
-        <!--<a href="history.jsp" target="_blank"><input type="button" value="记录" class="historyBtn" id="historyBtn"></a>-->
-        <!--<a href="Exit"><input type="button" name="exitBtn" value="退出" id="exitBtn"></a>-->
-        <!--&lt;!&ndash;<a href=""><input type="button" value="用户管理"></a>&ndash;&gt;-->
-        <!--&lt;!&ndash;<a href=""><input type="button" value="修改密码"></a>&ndash;&gt;-->
-    <!--</div>-->
-
-    <div class="cameraSite node" id="nodeInfo">
-        <h2>相机位置</h2>
-        <p></p>
+    <div class="box" id="box">
+        <label for="nodeNum">请输入节点个数: </label><input type="text" name="nodeNum" id="nodeNum">
+        <select name="selectModel" id="selectModel" class="selectModel">
+            <option value="sphere">球形</option>
+            <!--<option value="cube">立方体</option>-->
+            <option value="random">随机</option>
+        </select>
+        <input type="button" name="btn" value="确定" id="btn">
+        <input type="button" name="clearBtn" value="重置" id="clearBtn">
+        <input type="button" name="pauseBtn" value="暂停" id="pauseBtn">
+        <input type="button" name="hideLine" value="隐藏连线" id="hideLine">
+        <input type="button" name="hideNode" value="隐藏节点" id="hideNode">
+        <input type="button" name="showGird" value="显示网格" id="showGird">
+        <input type="button" name="nodeInfoBtn" value="节点信息" id="nodeInfoBtn">
+        <input type="button" name="dataBtn" value="显示数据" id="dataBtn">
+        <input type="button" name="hideAll" value="隐藏" id="hideAll">
     </div>
 
-    <div class="nodeStatus node" id="nodeStatus">
-        <h2>节点状态</h2>
-        <p></p>
+    <div class="showAllBox" id="showAllBox">
+        <span>显示</span>
     </div>
 
-    <!--<div class="node" id="nodeSite">-->
-    <!--<h2>节点序列</h2>-->
-    <!--<p></p>-->
-    <!--</div>-->
-
-    <div class="nodeControl node" id="nodeControl">
-        <h2>控制器</h2>
-        <p><label for="activeNum">激活 </label><input type="text" name="activeNum" id="activeNum"> 号 <input type="button" value="确定" id="activeBtn"></p>
-        <p><label for="xmNum">休眠 </label><input type="text" name="xmNum" id="xmNum"> 号 <input type="button" value="确定" id="xmBtn"></p>
-        <p>
-            <label for="actionInput">功能 </label><input type="text" name="actionInput" id="actionInput"> 号
-            <select name="actionSelect" id="actionSelect" class="actionSelect selectModel" title="">
-                <option value="wd">温度</option>
-                <option value="ph">PH</option>
-            </select>
-            <input type="button" value="确定" class="actionBtn" id="actionBtn">
-        </p>
-        <p>
-            <label for="powerInput">功率 </label><input type="text" name="powerInput" id="powerInput" title=""> 号
-            <select name="powerSelect" id="powerSelect" class="powerSelect selectModel">
-                <option value="powerNum1">100</option>
-                <option value="powerNum2">200</option>
-            </select>
-            <input type="button" value="确定" class="powerBtn" id="powerBtn">
-        </p>
-        <!--<p class="activeXmBox"><input type="button" value="激活所有" id="activeAllBtn"><input type="button" value="休眠所有" id="xmAllBtn"></p>-->
-
+    <div class="dataBox" id="dataBox">
+        <table id="dataBoxTable">
+        </table>
     </div>
-</div>
 
-<script src="js/jquery.js"></script>
-<script src="js/three.js"></script>
-<script src="js/CanvasRenderer.js"></script>
-<script src="js/Projector.js"></script>
-<script src="js/dat.gui.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/index.js"></script>
+    <ul class="nodeStatusColor" id="nodeStatusColor">
+        <li class="list1"></li>
+        <li class="list2"></li>
+        <li class="list3"></li>
+    </ul>
+
+
+    <div class="nodeInfoBox" id="nodeInfoBox">
+        <table id="nodeInfoBoxTable">
+        </table>
+    </div>
+
+
+    <div class="leftAreaBox" id="leftAreaBox">
+
+        <!--<div class="user node">-->
+            <!--<h2>用户中心</h2>-->
+            <!--&lt;!&ndash;<p>${sessionScope.user.username} 欢迎您</p>&ndash;&gt;-->
+            <!--<p>admin 欢迎您</p>-->
+            <!--<a href="history.jsp" target="_blank"><input type="button" value="记录" class="historyBtn" id="historyBtn"></a>-->
+            <!--<a href="Exit"><input type="button" name="exitBtn" value="退出" id="exitBtn"></a>-->
+            <!--&lt;!&ndash;<a href=""><input type="button" value="用户管理"></a>&ndash;&gt;-->
+            <!--&lt;!&ndash;<a href=""><input type="button" value="修改密码"></a>&ndash;&gt;-->
+        <!--</div>-->
+
+        <div class="cameraSite node" id="nodeInfo">
+            <h2>相机位置</h2>
+            <p></p>
+        </div>
+
+        <div class="nodeStatus node" id="nodeStatus">
+            <h2>节点状态</h2>
+            <p></p>
+        </div>
+
+        <!--<div class="node" id="nodeSite">-->
+        <!--<h2>节点序列</h2>-->
+        <!--<p></p>-->
+        <!--</div>-->
+
+        <div class="nodeControl node" id="nodeControl">
+            <h2>控制器</h2>
+            <p><label for="activeNum">激活 </label><input type="text" name="activeNum" id="activeNum"> 号 <input type="button" value="确定" id="activeBtn"></p>
+            <p><label for="xmNum">休眠 </label><input type="text" name="xmNum" id="xmNum"> 号 <input type="button" value="确定" id="xmBtn"></p>
+            <p>
+                <label for="actionInput">功能 </label><input type="text" name="actionInput" id="actionInput"> 号
+                <select name="actionSelect" id="actionSelect" class="actionSelect selectModel" title="">
+                    <option value="wd">温度</option>
+                    <option value="ph">PH</option>
+                </select>
+                <input type="button" value="确定" class="actionBtn" id="actionBtn">
+            </p>
+            <p>
+                <label for="powerInput">功率 </label><input type="text" name="powerInput" id="powerInput" title=""> 号
+                <select name="powerSelect" id="powerSelect" class="powerSelect selectModel">
+                    <option value="powerNum1">100</option>
+                    <option value="powerNum2">200</option>
+                </select>
+                <input type="button" value="确定" class="powerBtn" id="powerBtn">
+            </p>
+            <!--<p class="activeXmBox"><input type="button" value="激活所有" id="activeAllBtn"><input type="button" value="休眠所有" id="xmAllBtn"></p>-->
+
+        </div>
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/three.js"></script>
+    <script src="js/CanvasRenderer.js"></script>
+    <script src="js/Projector.js"></script>
+    <script src="js/dat.gui.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/index.js"></script>
 
 </body>
 </html>
